@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html data-theme="dracula" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -29,7 +29,7 @@
         <div class="grid grid-cols-4 gap-4 mt-4">
             @foreach( $posts as $post )
                 <div>
-                    <div class="card bg-base-100 shadow-xl">
+                    <div class="card bg-base-200 shadow-xl">
                         <!-- <figure>
                             <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                                 alt="Shoes" />
