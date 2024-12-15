@@ -10,6 +10,15 @@
 </head>
 
 <body>
+    <div class="navbar bg-base-100">
+        <div class="flex-1">
+            <a class="btn btn-ghost text-xl" href="/">myBlog</a>
+        </div>
+        <div class="flex-none">
+            <a href="/register" class="btn btn-outline btn-primary">Register</a>
+        </div>
+    </div>
+
     <div class="container mx-auto p-4">
         <!-- Pagination -->
         <div class="flex justify-center">
