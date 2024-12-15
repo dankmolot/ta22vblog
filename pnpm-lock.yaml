@@ -5,8 +5,14 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@tailwindcss/forms':
+    specifier: ^0.5.2
+    version: 0.5.9(tailwindcss@3.4.16)
+  alpinejs:
+    specifier: ^3.4.2
+    version: 3.14.7
   autoprefixer:
-    specifier: ^10.4.20
+    specifier: ^10.4.2
     version: 10.4.20(postcss@8.4.49)
   axios:
     specifier: ^1.7.4
@@ -18,10 +24,10 @@ devDependencies:
     specifier: ^1.0
     version: 1.1.1(vite@5.4.11)
   postcss:
-    specifier: ^8.4.47
+    specifier: ^8.4.31
     version: 8.4.49
   tailwindcss:
-    specifier: ^3.4.13
+    specifier: ^3.1.0
     version: 3.4.16
   vite:
     specifier: ^5.0
@@ -463,8 +469,33 @@ packages:
     dev: true
     optional: true
 
+  /@tailwindcss/forms@0.5.9(tailwindcss@3.4.16):
+    resolution: {integrity: sha512-tM4XVr2+UVTxXJzey9Twx48c1gcxFStqn1pQz0tRsX8o3DvxhN5oY5pvyAbUx7VTaZxpej4Zzvc6h+1RJBzpIg==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1 || >= 4.0.0-alpha.20'
+    dependencies:
+      mini-svg-data-uri: 1.4.4
+      tailwindcss: 3.4.16
+    dev: true
+
   /@types/estree@1.0.6:
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
+    dev: true
+
+  /@vue/reactivity@3.1.5:
+    resolution: {integrity: sha512-1tdfLmNjWG6t/CsPldh+foumYFo3cpyCHgBYQ34ylaMsJ+SNHQ1kApMIa8jN+i593zQuaw3AdWH0nJTARzCFhg==}
+    dependencies:
+      '@vue/shared': 3.1.5
+    dev: true
+
+  /@vue/shared@3.1.5:
+    resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
+    dev: true
+
+  /alpinejs@3.14.7:
+    resolution: {integrity: sha512-ScnbydNBcWVnCiVupD3wWUvoMPm8244xkvDNMxVCspgmap9m4QuJ7pjc+77UtByU+1+Ejg0wzYkP4mQaOMcvng==}
+    dependencies:
+      '@vue/reactivity': 3.1.5
     dev: true
 
   /ansi-regex@5.0.1:
@@ -924,6 +955,11 @@ packages:
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.52.0
+    dev: true
+
+  /mini-svg-data-uri@1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
     dev: true
 
   /minimatch@9.0.5:
