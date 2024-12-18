@@ -15,7 +15,11 @@
             <a class="btn btn-ghost text-xl" href="/">myBlog</a>
         </div>
         <div class="flex-none">
-            <a href="/register" class="btn btn-outline btn-primary">Register</a>
+            @if (Auth::check())
+                <a href="/dashboard" class="btn btn-outline btn-primary">Dashboard</a>
+            @else
+                <a href="/login" class="btn btn-outline btn-primary">Login</a>
+            @endif
         </div>
     </div>
 

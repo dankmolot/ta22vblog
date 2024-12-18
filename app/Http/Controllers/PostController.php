@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -13,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::where('user_id', Auth::id())->paginate(8);
+        return view('post.index', compact('posts'));
     }
 
     /**
@@ -21,7 +23,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
