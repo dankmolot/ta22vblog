@@ -8,7 +8,7 @@ use App\Models\Post;
 class PublicController extends Controller
 {
     public function index() {
-        $posts = Post::simplePaginate(1);
+        $posts = Post::select()->orderByDesc('id')->simplePaginate(16);
         return view('welcome', compact('posts'));
     }
 }

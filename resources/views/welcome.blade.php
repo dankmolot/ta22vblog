@@ -15,7 +15,11 @@
             <a class="btn btn-ghost text-xl" href="/">myBlog</a>
         </div>
         <div class="flex-none">
-            <a href="/register" class="btn btn-outline btn-primary">Register</a>
+            @if (Auth::check())
+                <a href="/dashboard" class="btn btn-outline btn-primary">Dashboard</a>
+            @else
+                <a href="/login" class="btn btn-outline btn-primary">Login</a>
+            @endif
         </div>
     </div>
 
@@ -36,7 +40,7 @@
                         </figure> -->
                         <div class="card-body">
                             <h2 class="card-title">{{ $post->title }}</h2>
-                            <p>{{ $post->body }}</p>
+                            <p>{{ $post->snippet }}</p>
                             <!-- <div class="card-actions justify-end">
                                 <button class="btn btn-primary">Buy Now</button>
                             </div> -->
