@@ -23,6 +23,12 @@
         </div>
     </div>
 
+    @unless (Auth::check())
+        <div class="flex justify-center mt-8">
+            <p class="mx-auto">To view posts, you need to <a class="underline" href="{{ route('login') }}">login</a></p>
+        </div>
+    @endunless
+
     <div class="container mx-auto p-4">
         <!-- Pagination -->
         <div class="flex justify-center">
@@ -34,16 +40,16 @@
             @foreach( $posts as $post )
                 <div>
                     <div class="card bg-base-200 shadow-xl">
-                        <!-- <figure>
-                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                alt="Shoes" />
-                        </figure> -->
                         <div class="card-body">
                             <h2 class="card-title">{{ $post->title }}</h2>
                             <p>{{ $post->snippet }}</p>
-                            <!-- <div class="card-actions justify-end">
-                                <button class="btn btn-primary">Buy Now</button>
-                            </div> -->
+                            <div class="card-actions justify-between items-center">
+                                <div class="flex flex-col opacity-50 text-sm">
+                                    <span>{{ $post->created_at->diffForHumans() }}</span>
+                                    <span>By {{ $post->user->name }}</span>
+                                </div>
+                                <a class="btn btn-primary" href="{{ route('post.show', $post) }}">Read more</a>
+                            </div>
                         </div>
                     </div>
                 </div>

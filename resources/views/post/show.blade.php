@@ -4,7 +4,7 @@
 
 @section('actions')
 <div>
-    <a href="{{ route('post.index') }}" class="btn btn-primary">Back to posts</a>
+    <button onclick="history.back()" class="btn btn-primary">Go back</a>
 </div>
 @endsection
 
