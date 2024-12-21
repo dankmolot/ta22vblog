@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
+use App\Models\Comment;
+use App\Http\Requests\Post\StorePostRequest;
+use App\Http\Requests\Post\UpdatePostRequest;
+use App\Http\Requests\Post\StoreCommentRequest;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -42,6 +44,17 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
+    public function storeComment(Post $post, StoreCommentRequest $request)
+    {
+        $comment = new Comment();
+        $comment->content = $request->input('content');
+        $comment->user()->associate(auth()->user());
+        $comment->post()->associate($post);
+        $comment->save();
+
+        return redirect()->back();
+    }
+
     /**
      * Display the specified resource.
      */
@@ -76,6 +89,12 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        return redirect()->back();
+    }
+
+    public function destroyComment(Post $post, Comment $comment)
+    {
+        $comment->delete();
         return redirect()->back();
     }
 }

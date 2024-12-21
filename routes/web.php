@@ -18,6 +18,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('post', PostController::class);
+    Route::post('post/{post}/comment', [PostController::class, 'storeComment'])->name('post.comment');
+    Route::delete('post/{post}/comment/{comment}', [PostController::class, 'destroyComment'])->name('post.comment.destroy');
+
     Route::resource('user', UserController::class);
 });
 
