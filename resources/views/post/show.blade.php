@@ -20,6 +20,13 @@
                 <span>by {{ $post->user->name }}</span>
             </div>
         </div>
+
+        <div class="flex flex-wrap mb-4">
+            @foreach ($post->tags as $tag)
+                <a class="badge badge-ghost">{{ $tag->name }}</a>
+            @endforeach
+        </div>
+
         <div class="border border-base-content mb-4 opacity-10"></div>
 
         <p class="mb-4">{{ $post->body }}</p>

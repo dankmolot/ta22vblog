@@ -36,14 +36,26 @@
         </div>
 
         <!-- Main content page -->
-        <div class="grid grid-cols-4 gap-4 mt-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-4">
             @foreach( $posts as $post )
                 <div>
                     <div class="card bg-base-200 shadow-xl">
                         <div class="card-body">
+                            <!-- Title -->
                             <h2 class="card-title">{{ $post->title }}</h2>
+
+                            <!-- Short description -->
                             <p>{{ $post->snippet }}</p>
-                            <div class="card-actions justify-between items-center">
+
+                            <!-- Tags -->
+                            <div class="card-actions">
+                                @foreach( $post->tags as $tag )
+                                    <a class="badge">{{ $tag->name }}</a>
+                                @endforeach
+                            </div>
+
+                            <!-- Author, date and actions -->
+                            <div class="card-actions justify-between items-center mt-4">
                                 <div class="flex flex-col opacity-50 text-sm">
                                     <span>{{ $post->created_at->diffForHumans() }}</span>
                                     <span>By {{ $post->user->name }}</span>
@@ -54,6 +66,11 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-8">
+            {{ $posts->links() }}
         </div>
     </div>
 </body>
