@@ -24,7 +24,7 @@
             <!-- Tags -->
             <div class="card-actions">
                 @foreach( $post->tags as $tag )
-                    <a class="badge" href="{{ route('tag.show', $tag) }}">{{ $tag->name }}</a>
+                    <a class="badge badge-ghost" href="{{ route('tag.show', $tag) }}">{{ $tag->name }}</a>
                 @endforeach
             </div>
 

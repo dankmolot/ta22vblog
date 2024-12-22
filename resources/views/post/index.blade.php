@@ -18,6 +18,7 @@
             <tr>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Tags</th>
                 <th>Last edit</th>
                 <th>Actions</th>
             </tr>
@@ -27,6 +28,11 @@
             <tr>
                 <td>{{ $post->title }}</td>
                 <td width="99%">{{ $post->snippet }}</td>
+                <td class="flex flex-wrap justify-center">
+                    @foreach( $post->tags as $tag )
+                        <a class="badge m-1 whitespace-nowrap" href="{{ route('tag.show', $tag) }}">{{ $tag->name }}</a>
+                    @endforeach
+                </td>
                 <td class="whitespace-nowrap">{{ $post->updated_at }}</td>
                 <td class="flex gap-2">
                     <a class="btn btn-primary" href="{{ route('post.show', $post->id) }}">View</a>

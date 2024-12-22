@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('user.update', $user) }}" enctype="multipart/form-data" class="w-full max-w-screen-sm mx-auto bg-base-100 px-4 flex flex-col gap-4">
+<form method="POST" action="{{ route('user.update', $user) }}" class="w-full max-w-screen-sm mx-auto bg-base-100 px-4 flex flex-col gap-4">
     @csrf
     @method('PUT')
 

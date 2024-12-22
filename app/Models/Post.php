@@ -31,4 +31,8 @@ class Post extends Model
     public function tags() {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function hasTag($tag) {
+        return $this->tags->contains($tag);
+    }
 }

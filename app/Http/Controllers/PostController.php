@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Tag;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Http\Requests\Post\StoreCommentRequest;
@@ -27,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        $tags = Tag::select('id', 'name')->get();
+        return view('post.create', compact('tags'));
     }
 
     /**
@@ -40,6 +42,8 @@ class PostController extends Controller
         $post->body = $request->input('body');
         $post->user()->associate(auth()->user());
         $post->save();
+
+        $post->tags()->attach($request->input('tags'));
 
         return redirect()->route('post.index');
     }
@@ -68,7 +72,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.edit', compact('post'));
+        $tags = Tag::select('id', 'name')->get();
+        return view('post.edit', compact('post', 'tags'));
     }
 
     /**
@@ -79,6 +84,8 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->save();
+
+        $post->tags()->sync($request->input('tags'));
 
         return redirect()->route('post.index');
     }

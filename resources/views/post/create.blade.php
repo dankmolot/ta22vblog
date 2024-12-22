@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data" class="w-full max-w-screen-sm mx-auto bg-base-100 px-4 flex flex-col gap-4">
+<form method="POST" action="{{ route('post.store') }}" class="w-full max-w-screen-sm mx-auto bg-base-100 px-4 flex flex-col gap-4">
     @csrf
     <h1 class="text-2xl bold font-semibold mx-auto mt-4">Post creator 3000</h2>
     <!-- Post Title -->
@@ -20,6 +20,19 @@
         <x-textarea id="body" class="w-full" name="body" required placeholder="Write your post here"/>
         <x-input-error :messages="$errors->get('body')" class="mt-2" />
     </div>
+
+    <!-- Post tags -->
+    <details class="dropdown">
+        <summary class="btn btn-outline m-1">Select tags</summary>
+        <div class="form-control menu dropdown-content w-full bg-base-300 shadow-xl flex flex-row flex-wrap justify-between gap-3">
+            @foreach($tags as $tag)
+                <label class="label cursor-pointer w-fit">
+                    <span class="label-text">{{ $tag->name }}</span>
+                    <input type="checkbox" name="tags[]" value="{{ $tag->id }}" class="checkbox ml-2" />
+                </label>
+            @endforeach
+        </div>
+    </details>
 
     <!-- Create -->
     <div class="flex mx-auto gap-4">
